@@ -1,18 +1,18 @@
-import Link from "next/link";
+// import Link from "next/link";
 
-import { LatestPost } from "@/app/_components/post";
-import { getServerAuthSession } from "@/server/auth";
+// import { LatestPost } from "@/app/_components/post";
+// import { getServerAuthSession } from "@/server/auth";
 import { api, HydrateClient } from "@/trpc/server";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await getServerAuthSession();
+  // const hello = await api.post.hello({ text: "from tRPC" });
+  // const session = await getServerAuthSession();
 
-  void api.post.getLatest.prefetch();
+  const { greeting } = await api.post.hello({ text: "from tRPC" });
 
   return (
     <HydrateClient>
-      <main>hello world</main>
+      <main>{greeting}</main>
     </HydrateClient>
   );
 }
