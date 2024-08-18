@@ -8,11 +8,9 @@ export default async function Home() {
   // const hello = await api.post.hello({ text: "from tRPC" });
   // const session = await getServerAuthSession();
 
-  const { greeting } = await api.post.hello({ text: "from tRPC" });
-
   return (
     <HydrateClient>
-      <main>{greeting}</main>
+      <main>Jo</main>
     </HydrateClient>
   );
 }
