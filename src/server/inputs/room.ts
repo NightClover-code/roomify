@@ -23,3 +23,36 @@ export const roomInputCreate = z.object({
     }),
   ),
 });
+
+export const roomInputUpdate = z.object({
+  id: z.number().int(), //required
+  name: z.string().optional(),
+  description: z.string().optional(),
+  pricePerNight: z
+    .number()
+    .positive("Price per night must be positive")
+    .optional(),
+  address: z.string().optional(),
+  locationId: z.number().optional(),
+  guestCapacity: z
+    .number()
+    .positive("Guest capacity must be positive")
+    .optional(),
+  numOfBeds: z.number().positive("Number of beds must be positive").optional(),
+  isInternet: z.boolean().optional(),
+  isBreakfast: z.boolean().optional(),
+  isAirConditioned: z.boolean().optional(),
+  isPetsAllowed: z.boolean().optional(),
+  isRoomCleaning: z.boolean().optional(),
+  ratings: z.number().optional(),
+  numOfReviews: z.number().optional(),
+  category: z.enum(["King", "Single", "Twins"]).optional(),
+  images: z
+    .array(
+      z.object({
+        publicId: z.string(),
+        url: z.string().url(),
+      }),
+    )
+    .optional(),
+});
