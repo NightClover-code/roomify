@@ -2,6 +2,7 @@
 
 // import { LatestPost } from "@/app/_components/post";
 // import { getServerAuthSession } from "@/server/auth";
+import { auth } from "@/server/auth";
 import { HydrateClient } from "@/trpc/server";
 import type { Metadata } from "next";
 
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 export default async function Home() {
   // const hello = await api.post.hello({ text: "from tRPC" });
   // const session = await getServerAuthSession();
+
+  const session = await auth();
 
   return (
     <HydrateClient>

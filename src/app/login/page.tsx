@@ -7,24 +7,30 @@ import { cn } from "@/lib/utils";
 import { satoshi } from "../fonts";
 import { FaGithub } from "react-icons/fa";
 import GoogleIcon from "@/components/icons/google";
+import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
   const [isReturningUser, setIsReturningUser] = useState(false);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    // Check if the user has visited before
-    // This is a placeholder - replace with your actual logic
     const hasVisitedBefore = localStorage.getItem("hasVisited");
     setIsReturningUser(!!hasVisitedBefore);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Email submitted:", email);
-    // Set that the user has visited
     localStorage.setItem("hasVisited", "true");
+
+    try {
+      const result = await signIn("email", { email, callbackUrl: "/" });
+
+      if (result?.error) {
+        console.error("Error signing in:", result.error);
+      }
+    } catch (error) {
+      console.error("Error during sign in:", error);
+    }
   };
 
   return (
