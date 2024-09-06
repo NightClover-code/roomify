@@ -7,11 +7,21 @@ import Logo from "./common/logo";
 
 export default function Header({}) {
   return (
-    <header className="flex w-full items-center justify-between bg-white px-12 py-4 shadow-sm">
+    <header className="absolute left-0 right-0 top-0 flex w-full items-center justify-between bg-white px-12 py-4 shadow-sm">
       <Logo />
 
-      <div>
-        <Button>Sign In</Button>
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-7">
+          <Link
+            href="/login"
+            className="font-medium text-gray-600 hover:text-gray-900"
+          >
+            Log in
+          </Link>
+          <Link href="/signup">
+            <Button>Sign up</Button>
+          </Link>
+        </div>
         {/* {isLoggedIn ? (
           <Menu>
             <MenuButton className="flex items-center space-x-2">
