@@ -106,17 +106,14 @@ model Session {
 }
 
 model User {
-    id                  String    @id @default(cuid())
-    email               String?   @unique
-    password            String?   @map("password")
-    avatarPublicId      String?
-    avatarUrl           String?
-    role                String    @default("user")
-    createdAt           DateTime  @default(now())
-    resetPasswordToken  String?
-    resetPasswordExpire DateTime?
-    emailVerified       DateTime?
-    image               String?
+    id             String    @id @default(cuid())
+    email          String    @unique
+    emailVerified  DateTime?
+    avatarPublicId String?
+    avatarUrl      String?
+    role           String    @default("user")
+    createdAt      DateTime  @default(now())
+    lastLoginAt    DateTime?
 
     // Relations
     accounts Account[]

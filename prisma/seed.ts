@@ -33,7 +33,6 @@ async function main() {
       user: {
         create: {
           email: "john@example.com",
-          password: "securepassword",
         },
       },
       images: {
@@ -75,7 +74,7 @@ async function main() {
       numOfReviews: 5,
       category: "Single",
       user: {
-        create: { email: "jane@example.com", password: "securepassword" },
+        create: { email: "jane@example.com" },
       },
       images: {
         create: [
