@@ -11,17 +11,9 @@ export default function Header({}) {
       <Logo />
 
       <div className="flex items-center space-x-4">
-        <div className="flex items-center gap-7">
-          <Link
-            href="/login"
-            className="font-medium text-gray-600 hover:text-gray-900"
-          >
-            Log in
-          </Link>
-          <Link href="/signup">
-            <Button>Sign up</Button>
-          </Link>
-        </div>
+        <Link href="/login">
+          <Button>Login</Button>
+        </Link>
         {/* {isLoggedIn ? (
           <Menu>
             <MenuButton className="flex items-center space-x-2">
